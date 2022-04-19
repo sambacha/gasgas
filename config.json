@@ -1,0 +1,81 @@
+{
+    "network": "mainnet",
+    "chains": {
+      "ethereum": {
+        "rpcUrl": "https://mainnet.infura.io/v3/${INFURA_API_KEY}",
+        "maxGasPrice": 500
+      },
+      "polygon": {
+        "rpcUrl": "https://polygon-rpc.com",
+        "maxGasPrice": 5000
+      },
+      "optimism": {
+        "rpcUrl": "https://mainnet.optimism.io",
+        "maxGasPrice": 500
+      },
+    "tokens": {
+      "USDC": true
+    },
+    "routes": {
+      "ethereum": {
+        "polygon": true,
+        "optimism": true
+      },
+      "polygon": {
+        "ethereum": true,
+        "optimism": true
+      },
+      "optimism": {
+        "ethereum": true,
+        "polygon": true
+      }
+    },
+    "db": {
+      "location": "/root/db"
+    },
+    "logging": {
+      "level": "debug"
+    },
+    "metrics": {
+      "enabled": true,
+      "port": 8080
+    },
+    "keystore": {
+      "location": "/root/keystore.json",
+      "parameterStore": "$(pwd)/keystore.json",
+      "awsRegion": "us-east-1"
+    },
+    "watchers": {
+      "bondTransferRoot": true,
+      "bondWithdrawal": true,
+      "commitTransfers": true,
+      "settleBondedWithdrawals": true,
+      "xDomainMessageRelay": true
+    },
+    "commitTransfers": {
+      "minThresholdAmount": {
+        "USDC": {
+          "polygon": {
+            "ethereum": 170000,
+            "gnosis": 50000,
+            "optimism": 130000,
+            "arbitrum": 130000
+          },
+          "optimism": {
+            "ethereum": 170000,
+            "polygon": 130000,
+            "gnosis": 50000,
+            "arbitrum": 130000
+          }
+        }
+      }
+    },
+    "fees": {
+      "USDC": {
+        "ethereum": 14,
+        "polygon": 14,
+        "optimism": 14
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+global:
+  scrape_interval:     15s
+
+  external_labels:
+    monitor: 'hop-node-monitor'
+
+scrape_configs:
+  - job_name: 'prometheus'
+
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: ['localhost:8080']
